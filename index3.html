@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+//	var obj = {};
+
+//	var obj_2 = new Object();
+
+/*	student.name = 'Alex';
+	student.course = 'JavaScript';
+	student.course_part = 3;
+	student['Адрес'] = 'г. Киев, улю Арсенальная, 5';*/
+
+/*	var student = {
+		name: 'Alex',
+		course: 'JavaScript',
+		courses_learned: ['HTML', 'CSS', 'Wordpress']
+	};
+
+/*	console.log(student.courses_learned);
+console.log('Student '+student.name+' learns '+student.course);*/
+
+/*	if ('name' in student) console.log(student.name)
+	else console.error('not find')
+
+
+	var courser_q = 0;
+	for (var i in student) {
+		if (i === 'courses_learned') {
+			var courser_q = student[i].length;
+			student.courses_q = courser_q;
+		}
+		console.log(i+':'+student[i]);
+	}
+	console.log(student);*/
+
+/*	var student = [
+		{
+			name: 'Alex',
+			age: 18
+		}, {
+			name: 'Mark',
+			age: 30
+		}, {
+			name: 'Eva',
+			age: 16
+		}, {
+			name: 'Andre',
+			age: 19
+		}
+		];*/
+
+/*	var sortByAge = {
+		'18+': [],
+		'до 18': []
+	};
+
+	console.log(student, sortByAge);
+
+
+	for (var i=0; i<student.length; i++) {
+		student[i].age>=18 ? sortByAge['18+'].push(student[i]) : sortByAge['до 18'].push(student[i]);
+	}
+
+	console.log(sortByAge);*/
+
+	// delete student[0].name;
+	// console.log(student);
+
+/*	var student = {
+			name: 'Alex',
+			age: 18
+		};
+
+	var student_copy = Object.assign(student, {courses: 'JS'});
+	console.log(student, student_copy);*/
+/*	var student_copy = {}; 
+
+	for (var i in student) {
+		student_copy[i]=student[i];
+	}
+
+	student_copy.name = 'Mark';
+	console.log(student, student_copy);
+
+	*/
+
+/*	function sum(a,b){
+		console.info(a);
+		return a+b;
+	};
+
+	sum(2,2);*/
+/*
+	var summ=function(a,b){
+		return a+b;
+	};
+
+	function doSmth (a,b,func){
+		return func(a,b);
+	};
+
+	var elSumm = doSmth(2,5,summ);
+	console.log(elSumm);
+	*/
+
+/*	var timer = setInterval(function(){
+		console.log('Hello');
+	}, 200);	
+	console.log(timer);
+
+	setTimeout(function(){clearInterval(timer)}, 10000);*/
+
+/*	var student = {
+		name: 'Alex',
+		sayHi: function(name){
+			console.log('Hi from '+this.name+' '+name);
+		}
+	};
+
+	student.sayHi('Alisa');
+	student.sayHi('Mark');*/
+
+/*	function student(name, course){
+		console.log(this);
+	};
+
+	student();
+	this.a = '2'; */
+
+	// ПРИНЦИП МОДУЛЬНОСТИ
+
+	/*(function(){
+		var a='2';
+		console.log(a);
+	})();
+	var a='2';*/
+
+/*	function Student(name, course) {
+		this.name = name;
+		this.course = course;
+	};
+	Student.prototype.sayHi = function(){
+		console.log('Hi, I am '+this.name+'!');
+	}
+	Student.prototype.changeName = function(name) {
+		this.name = name;
+		console.log('Name change to '+name);
+	}
+
+	var vasiliy = new Student ('Vasya', 'JS'),
+		anna = new Student ('Anna', 'CSS3');
+
+	console.log(vasiliy, anna);	
+	vasiliy.sayHi();
+	anna.sayHi();
+	vasiliy.changeName('Gena');
+	vasiliy.sayHi();*/
+
+	var studentTalk = {
+		sayHi: function(){
+			console.log('Hi, I am '+this.name+'!')
+		},
+		sayBye: function(){
+			console.log('Bye, from '+this.name+'!')
+		}
+	}
+
+	var vasya = {
+		name: 'Vasya',
+		age: 30,
+	}, natasha = {
+		name: 'Natasha',
+		age: 20,
+	}
+
+	vasya.__proto__ = studentTalk;
+	natasha.__proto__ = studentTalk;
+
+	vasya.sayHi();
+	vasya.sayBye();
+
+	natasha.sayHi();
+	natasha.sayBye();
+
+
+	function summ(a,b) {
+		console.log(arguments);
+		console.log(a,b);
+	}
+
+	summ(2,2,3,23,54,5,55,5);
+</script>
+</body>
+</html>

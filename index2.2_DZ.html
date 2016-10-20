@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		var array = [
+		[2,5,6],
+		[7,3,9],
+		[3,2,6]
+		]
+		for (var i=0; i<array.length; i++) {
+			for (j=0; j<array[i].length; j++) {
+				document.write(array[i][j], ' ');
+			}
+			document.write('<br>');
+		}
+		
+		var	array_length = +prompt('Length');
+		var numbers = new Array(array_length);
+		var summ=0,
+		zero=0,
+		averag=0;
+
+		for (var i=0;i<array_length;i++) {
+			numbers[i] = new Array(array_length);
+			for (var j=0;j<array_length;j++) {
+				numbers[i][j] = Math.round(Math.random()*100)-50;
+				document.write (numbers[i][j], ' ');
+			}
+			document.write('<br>')
+		}
+		var min=numbers[0][0],
+		max=numbers[0][0];
+
+		for (var i=0;i<array_length;i++) {
+			for (var j=0;j<array_length;j++) {
+				if (min>numbers[i][j]) {
+					min=numbers[i][j];
+				}	
+
+				if (max<numbers[i][j]) {
+					max=numbers[i][j];
+				}
+
+				if (numbers[i][j]===0) {
+					zero++;
+				}
+
+				summ +=numbers[i][j];
+				averag = summ/(array_length*2);
+
+			}	
+		}
+		document.write('<p>Min: '+min+'</p>');
+		document.write('<p>Max: '+max+'</p>');
+		document.write('<p>Zero: '+zero+'</p>');
+		document.write('<p>Summ: '+summ+'</p>');
+		document.write('<p>Avareg: '+averag+'</p>');
+
+		document.write('<p> Unpaired numbers: ');
+		for (var i=0;i<array_length;i++) {
+			for (var j=0;j<array_length;j++) {
+				if (numbers[i][j]%2==1) {
+					document.write(numbers[i][j]+', ');
+				}	
+			}	
+		}
+		document.write('</p>');
+
+		document.write('<p> Paired numbers: ');
+		for (var i=0;i<array_length;i++) {
+			for (var j=0;j<array_length;j++) {
+				if (numbers[i][j]%2==0) {
+					document.write(numbers[i][j]+', ');
+				}	
+			}	
+		}
+		document.write('</p>');
+
+		var numbers2 = new Array(5);
+		for (var i=0;i<numbers2.length;i++) {
+			numbers2[i] = new Array(5);
+			for (var j=0;j<numbers2.length;j++) {
+				numbers2[i][j] = Math.round(Math.random()*100)-50;
+				document.write (numbers2[i][j], ' ');
+			}
+			document.write('<br>')
+		}
+		document.write('<hr>')
+		for (var i=0;i<numbers2.length;i++) {
+			for (var j=0;j<numbers2.length;j++) {
+				if (i==j && numbers2[i][j]>0) {
+					numbers2[i][j]=1;
+				} 
+				if (i==j && numbers2[i][j]<0) {
+					numbers2[i][j]=0;
+				}
+				if ((i+j)==numbers2.length && numbers2[i][j]>0) {
+					numbers2[i][j]=1;
+				}
+				document.write(numbers2[i][j]+' ');
+			}
+			document.write('<br>')
+		}
+
+		
+	</script>
+</body>
+</html>

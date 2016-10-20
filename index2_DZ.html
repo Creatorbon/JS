@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+/*		
+		var A = +prompt('Введите число А: '),
+		    B = +prompt('Введите число B: '),
+		    summ = 0,
+		    even_number;
+		document.write('Непраные числа в промежутке от А до В: ');
+		for (A; A<=B; A++) {
+			summ +=A;
+			if (A%2==1) {
+				document.write(A,' ');
+			}
+		}
+		document.write('<p>Сумма всех чисел в промежутке от А до В: '+summ+'</p>');
+
+		document.write('<hr>');
+
+		var N = +prompt('Введите количесво пунктов доставки: '),
+			i=1, j=1;
+
+		document.write('<p> Количество пунктов доставки: '+N+'</p>');
+		do {
+			j*=i;
+			i++;
+		} while (i<=N);
+		document.write('<p> Количество возможных пунктов доставки: '+j+'</p>');
+
+		document.write('<hr>');
+		*/
+/*		var figure = new Array();
+		for (var i=0; i<=10; i++) {
+			document.write('<br>');
+			for (var j=0; j<=10; j++) {
+				document.write('* ');
+			}
+		}
+
+		document.write('<hr>');*/
+
+/*		var figure_2 = new Array();
+			
+		var i=0, j=0;
+		var max = +prompt('Введите высоту треугольника:'),
+
+		for (i=0y; i<max; i++) {
+			document.write('<br>');
+			for (j=0; j<max; j++) {
+				if (i>=j) {
+					document.write('*');
+				} else {
+					document.write(' ');	
+				}
+			}
+		}*/
+
+		var figure_2 = new Array();
+
+		var i=0, j=0;
+		var max = +prompt('Введите высоту треугольника:');
+
+		for (i=0; i<max; i++) {
+			figure_2[i] = new Array(max);
+			for (j=0; j<max; j++) {
+				if (i>=j) {
+					figure_2[i][j]='* ';
+				} else {
+					figure_2[i][j]=' ';	
+				}
+			document.write(figure_2[i][j]);
+			}
+			document.write('<br>');
+		}
+
+		for (i=0; i<max; i++) {
+			for (j=0; j<max; j++) {
+				if (i<max-1) {
+					figure_2.push(' ');
+				}
+			document.write(figure_2[i][j]);
+			}
+			document.write('<br>');
+		}
+
+
+
+		
+
+	</script>
+</body>
+</html>
