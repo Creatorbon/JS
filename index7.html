@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.error {
+			border: 2px solid red;
+		}
+		.success {
+			border: 2px solid green;
+		}
+	</style>
+</head>
+<body>
+
+	<ul class="user-list">
+		
+	</ul>
+	<button id="update">UPDATE</button>
+	<form>
+		<label>
+			Name:
+			<input type="text" name="login">
+		</label>
+		<label>
+			Password:
+			<input type="password" name="pass">
+		</label>
+		<label>
+			EMAIL:
+			<input type="email" name="email">
+		</label>
+		<br>
+		<input type="submit" value="SENT DATA">
+		<input type="reset" value="Reset">
+	</form>
+
+
+
+	<script>
+		var users_list = document.getElementsByClassName('user-list')[0];
+		var validation = {
+			by_length: function(fields) {
+				var validation_result = true;
+				fields.forEach(function(field){
+					if (field.value.length > 0) {
+						field.classList.add('success');
+						field.classList.remove('error');
+					} else {
+						field.classList.add('error');
+						field.classList.remove('success');
+					}
+				});
+				fields.forEach(function(field){
+					field.classList.contains('error') ? validation_result=false :validation_result=true;
+				});
+				return validation_result;
+			}
+		}
+
+		var request = {
+			url: 'https://volk-maks1mp.c9users.io/',
+			getData: function(){
+				var request  = new XMLHttpRequest();
+				// GET/POST/PUT/DELETE
+
+				request.open('GET', this.url+'users_list');
+				request.send();
+				request.onreadystatechange = function () {
+					if (request.status == 200 && request.readyState == 4) {
+						var parsed_data = JSON.parse(request.response), template = '';
+						parsed_data.forEach(function(user){
+							var parsed_user = JSON.parse(user);
+							template +='<li> Name: '+parsed_user.name+' Password: '+parsed_user.password+' Email: '+parsed_user.email+'</li>';
+						});
+						users_list.innerHTML = template;
+					}
+				}
+			}, 
+			sendData: function(data){
+				var request  = new XMLHttpRequest();
+
+				request.open('POST', this.url+'create_user');
+				request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				request.send(data);
+			}
+		};
+
+		update.onclick = function(){
+			request.getData();
+		}
+		request.getData();
+		var name_user = document.querySelector('[name="login"]'),
+			email = document.querySelector('[name="email"]'),
+			password = document.querySelector('[name="pass"]'),
+			submitBtn = document.querySelector('[type="submit"]');
+
+		submitBtn.addEventListener('click', function(e){
+			e.preventDefault();
+			var data = {
+				name: name_user.value,
+				password: password.value,
+				email: email.value
+			};
+			console.log(data);
+			var json_data = JSON.stringify(data);
+			var validation_result = validation.by_length([name_user, password, email]);
+/*			if (validation_result) {
+				request.sendData(json_data);
+				request.getData(json_data);
+				alert('success');
+			} else {
+				alert('error');
+			}*/
+			console.log(json_data);
+			request.sendData(json_data);
+			request.getData(json_data);
+
+		})
+		
+
+		
+
+	</script>
+</body>
+</html>

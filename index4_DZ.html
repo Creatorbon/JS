@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+/*	
+		var Game = function() {
+			this.all = [
+				{name:'apple', eatable: true},
+				{name:'tomato', eatable: true},
+				{name:'burger', eatable: true},
+				{name:'watermalon', eatable: true},
+				{name:'cherry', eatable: true},
+				{name:'cucumber', eatable: true},
+				{name:'coco cola', eatable: true},
+				{name:'orange', eatable: true},
+				{name:'banana', eatable: true},
+				{name:'cocoa', eatable: true},
+				{name:'peach', eatable: true},
+				{name:'car', eatable: false},
+				{name:'bus', eatable: false},
+				{name:'pen', eatable: false},
+				{name:'table', eatable: false},
+				{name:'phone', eatable: false},
+				{name:'notepad', eatable: false},
+				{name:'pencil', eatable: false},
+				{name:'miror', eatable: false},
+				{name:'alarm', eatable: false},
+				{name:'cup', eatable: false}
+			];	
+			this.i = 1;
+			this.counter =5;
+	    };
+
+		Game.prototype.start = function() {
+			var index = Math.round(Math.random()*this.all.length-1);
+			var result = prompt (this.all[index].name,'+ or -');
+			result = result == null ? this.i=this.counter : 
+			(result == '+' ? true : false);
+
+			if (this.all[index].eatable == result && this.i++<this.counter) {console.log(this.i);
+				this.start();
+			} else if (this.i-1 == this.counter) {
+				alert('YOU WIN!!!!!!');
+			} else {
+				alert('SORRY, YOU LOST!!!');
+			}
+		};
+
+		var game = new Game();
+		game.start();
+*/
+
+		var Zoo = function (name, typeOfAnimal) {
+			this.name = name;
+			this.typeOfAnimal = typeOfAnimal;
+		};
+		var add_animal = function () { 
+			var result = prompt('Add Animal', 'Lion,+')
+			__proto__.typeOfAnimal = result[result.lenght];
+		}
+		add_animal();
+	</script>
+</body>
+</html>

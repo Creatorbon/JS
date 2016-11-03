@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.block {
+			width:  200px;
+			height:  200px;
+			background-color: red;
+		}
+		.sup_block {
+			width:  100px;
+			height:  100px;
+			background-color: aqua;
+		}
+	</style>
+</head>
+<body>
+	<script>
+/*
+		for (var i=0; i<10; i++) {
+			(function (i){
+			document.write('<button id="btn'+i+'">'+i+'</button>');	
+			if (i===1) {
+				btn0.onclick = function() {
+					alert(i);
+				};
+			}
+		})(i);
+		};
+
+		var singleton = function () {
+			var name = 'Alex';
+
+			function addA(){
+				console.log(name+'A');	
+			}
+
+			return {
+				sayName: function () {
+					console.log(name);
+				},
+				changeName: function (value) {
+					name = value;
+				},
+				modifyName: function () {
+					return addA();
+				}
+			}
+		}();
+
+		singleton.sayName();
+		singleton.changeName('Mark');
+		singleton.modifyName();
+		singleton.sayName();
+		*/
+
+/*		console.log(window.location);
+
+		setTimeout(function () {
+			window.location.href = 'http://google.com';
+		}, 5000)*/
+
+	</script>	
+
+	<h1 align="center">HELLO</h1>
+	<form action=""  name="form">
+		<input type="text" id="login">
+		<input type="submit" value="submit">
+	</form>
+	<button id="btn1" class="btn">BUTTON1</button>
+	<input type="text" id="login">
+
+	<div class="block">
+		<div class="sup_block"></div>
+	</div>
+<!-- 	<button id="btn2" class="btn">BUTTON2</button>
+<button id="btn3" class="btn">BUTTON3</button>
+
+
+<h1 align="center">BYE</h1> -->
+
+	<script>
+		var block = document.querySelector('.block'),
+			sup_block = document.querySelector('.sup_block');
+
+	/*	block.onclick = function () {
+			console.log('RED')
+		};
+
+		sup_block.onclick = function (e) {
+			console.log('AQUA');
+			console.log(e.target);
+			e.stopPropagation();
+		}*/
+
+		// block.addEventListener ('click', function(e){
+		// 	console.log('first click');
+		// 	console.log(this);
+		// });
+		// sup_block.addEventListener ('click', function(e){
+		// 	console.log('second click');
+		// })
+
+		sup_block.addEventListener('click', function(){
+		/*	console.log(getComputedStyle(this).marginLeft)	;
+			this.style.marginLeft = '100px';*/
+
+			var totalMargin = parseInt(
+					getComputedStyle(this)
+				).marginLeft;
+
+			var newMargin = (totalMargin+50)+'px';
+			this.style.marginLeft=newMargin;
+		})
+
+	</script>
+
+	<script>
+		var btn1 = document.getElementById('btn1'),
+			header = document.querySelector('h1'),
+			input = document.getElementById('login'),
+			form = document.querySelector('[name="form"]'),
+			submit = document.querySelector('[type="submit"]');
+
+/*		var buttons = document.getElementsByClassName('btn');
+		var headers = document.getElementsByTagName('h1');
+
+		var collection = document.querySelectorAll('[align=center]');*/
+
+/*		console.log(btn1);
+		console.log(buttons);
+		console.log(headers);
+		console.log(collection);*/
+/*		setTimeout(function () { 
+			console.log(collection[0].innerHTML = 'HELLO FROM SCRIPT');
+		}, 2000);*/
+
+		// btn1.onclick = function () {
+		// 	console.log('click');
+		// }
+
+		// btn1.ondblclick = function () {
+		// 	console.log('click');
+		// }
+		// btn1.onblur = function () {
+		// 	console.log('click');
+		// }
+		// btn1.onfocus = function () {
+		// 	console.log('focus');
+		// }
+		// input.onblur = function () {
+		// 	this.value = 'blured';
+		// }
+		// input.onfocus = function () {
+		// 	this.value = 'focused';
+		// }
+
+		// input.onkeypress = function () {
+		// 	console.log(this.value);
+		// };
+		// input.onkeydown = function () {
+		// 	console.log(this.value);
+		// };
+		// input.onkeyup = function () {
+		// 	console.log(this.value);
+		// };
+
+		// input.onkeyup = function (event) {
+		// 	console.log(event.keyCode);
+		// }
+
+		// input.onmousedown = function (event) {
+		// 	console.log(event);
+		// }
+
+		// input.onmouseup = function (event) {
+		// 	console.log(event);
+		// }
+
+		// document.onmousewheel = function () {
+		// 	console.log ('wheel');
+		// }
+
+		document.resize = function () {
+			console.log('resize');
+		}
+
+
+
+	</script> 
+</body>
+</html>

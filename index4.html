@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		
+		// Number
+		// String
+		// Array
+		// Object
+
+/*		var a = {
+			_value: '2',
+			getValue: function(){
+				console.log(this._value);
+			},
+			setValue: function(value){
+				var self = this;
+				function init(){
+					console.log(self);
+				};
+				init();
+				this._value = value;
+				console.log('change');
+			}
+		};
+
+		Object.defineProperty(a, 'value', {
+			get: function(){
+				console.log(this._value);
+			},
+			set: function(new_value){
+				this._value = new_value;
+				console.log('value change');
+			}
+		});
+		
+
+		a.getValue();	
+		a.setValue('10');
+		a.value;
+		a.value = '5';
+		a.value;*/
+
+		// var Person = function(name, profession){
+		// 	this.name = name;
+		// 	this.stuff = profession;
+		// 		// this.sayHi = function(){
+		// 		// 	console.log(this.name);
+		// 		// }
+		// };
+
+		// Person.prototype.sayHi = function(){
+		// 	console.log('HI, I AM '+this.name+' !');
+		// }
+
+		// var vasya = new Person('Vasya', 'SE'),
+		// 	natali = new Person('Natali', 'Teacher')
+		// console.log(vasya, natali);
+		// vasya.sayHi();
+		// natali.sayHi();	
+
+/*			var Person = function(name, profession){
+			this.name = name;
+			this.stuff = profession;
+		};
+
+		Person.prototype.sayHi = function(){
+			console.log('HI, I AM '+this.name+' !');
+		}
+
+		var users = [
+		{
+			name: 'Vasya',
+			profession: 'JS dev'
+		}, {
+			name: 'Julia',
+			profession: 'Game dev'
+		}, {
+			name: 'Mark',
+			profession: 'Python dev'
+		}
+		];
+
+		for (var i=0; i<users.length; i++){
+			var new_person = new Person(users[i].name, users[i].profession);
+			new_person.sayHi();
+		}
+*/
+
+/*		function printColors(colors){
+			colors.forEach(function(item, index, arr){
+				document.write('<div style="color:#fff;background-color:'+item+'">'+item+'</div>');
+			});
+		};
+
+		function math(numb){
+			var double =numb.map(function(item){
+				return	item*item;
+			});
+			document.write(double);
+		};
+
+		function filterColors(colors, leter) {
+			var startB = colors.filter(function (colors) {
+				return colors[0]===leter;
+			});
+			printColors(startB);
+		};
+
+		 function multiplyArrEls(numbers){
+		 	console.log(
+		 			numbers.reduce(function(all_operation, now_el){
+		 				return all_operation*now_el;
+		 			})
+		 		);
+		 };
+
+		 function findSomeEls(arr, el){
+		 	console.log(
+		 			arr.find(function(item) {
+		 				return item[0]===el;
+		 			})
+		 		);
+		 };
+
+		 function sortArray(arr){
+		 	console.log(
+		 			arr.sort(function(a,b){
+		 				return b-a;
+		 			})
+		 		);
+		 }
+
+		var colors = ['red', 'green', 'blue', 'black', 'yellow', 'aqua'];
+
+		var numbers = [1,3,5,7,9];
+
+		printColors(colors);
+		math(numbers);
+		filterColors(colors, 'r');
+		multiplyArrEls(numbers);
+		findSomeEls(colors, 'b');
+		sortArray(numbers);
+*/	
+
+/*		function sayHi(stuff, name){
+			console.log(this.name+' say HI '+stuff+' '+name);
+		}	
+
+		var student = {
+			name: 'Vasiliy',
+			stuff: 'Software Engenner'
+		};
+
+		var teacher = {
+			name: 'Mariya Ivanovna',
+			stuff: 'English Teacher'
+		}
+// call
+// apply
+// bind
+		var hi = sayHi.bind(teacher, 'student', 'Mark');
+		hi();
+*/
+	</script>
+
+<!-- 	<script>
+	(function () {
+		var name = 'Vasya';
+		console.log(name);
+	})();
+</script>
+<script>
+	(function () {
+	var name = 'Petya';	
+		console.log(name);
+	})();
+</script>
+<script>
+	console.log(name);
+</script> -->
+
+<!-- 	<script>
+//		'use strict'; // strogii regim
+        	
+        var a = 2;
+        try{
+		console.log(b);
+        } catch(error){
+        	console.log(error);
+        }
+	
+	console.log(a);
+
+	
+</script> -->
+
+	<script>
+		
+	var Terminal  = function (title, balance, history) {
+		this.title = title;
+		this.balance = balance || 0;
+		this.history = history || [];
+	};
+
+	Terminal.prototype.addEvent = function (event) {
+		var date = new Date();
+		console.log('update history');
+		this.history.push({
+			date: date.toString(),
+			total:event.money,
+			dist: event.dist,
+			type: event.type,
+		})
+	};
+
+	Terminal.prototype.addCash = function(money, dist){
+		this.balance+=money
+		console.log('getting money');
+		this.addEvent({
+			money: money,
+			type: '+',
+			dist: dist,
+		})
+	};
+
+	var privatBank = new Terminal('Privat Bank', 5000);
+	privatBank.addCash(100, 'Телефон');
+	privatBank.addCash(250, 'Интернет');
+	</script>
+</body>
+</html>
