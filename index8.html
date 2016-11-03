@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	
+	<h1>TO DO LIST</h1>
+	<ul class="to-do-list">
+		
+	</ul>
+	<div class="add-task-field">
+		Title: <input type="text" name="task-name"> <br>
+		Prior: <input type="number" name="task-prior"> <br>
+		Status: <input type="checkbox" name="task-status"> <br>
+		<button id="add-task">ADD TASK</button>
+	</div>
+
+	<script>
+		function log (data) {
+			console.log(data);
+		};
+		var toDoList = {
+			getData: function (el) {
+				var nowPrior = parseInt(el.parent().find('.prior').text()),
+					title = el.parent().find('.title').text().trim();
+					return {
+						prior: nowPrior,
+						title: title
+					}
+
+			},
+			sort: function (arr, sortBy) {
+				return arr = arr.sort(function(a,b){
+					return b[sortBy] - a[sortBy];
+				})
+			},
+			update: function(list, tasks){
+				tasks = this.sort(tasks, 'prior');
+
+				var template = tasks.map(function(task){
+					var className, isChecked;
+					task.done ? className = 'success' : className = 'not-success';
+					className === 'success' ? isChecked = 'checked' : isChecked = '';
+
+					return '<li class"'+className+'"><label><input type="checkbox"'+isChecked+'> Prior: <span class="prior"> '+task.prior+'</span> Title: <span class="title"> '+task.title+'</span></label>'+'<button class="change-prior" data-operation="up">UP Prior +</button> <button class="change-prior" data-operation="down">DOWN Prior -</button></li>';
+				});
+
+				list.html(template.join(''));
+			}
+		};
+
+		var list = $('.to-do-list');
+		var tasks = [
+			{
+				title: 'Learn HTML',
+				prior: 1,
+				done: true
+			},
+			{
+				title: 'Learn JS',
+				prior: 5,
+				done: true
+			}, 
+			{
+				title: 'Learn jQuery',
+				prior: 4,
+				done: true
+			}
+		];
+
+
+		toDoList.update(list, tasks);
+		$('body').on('click', '.change-prior', function(){
+			var data = toDoList.getData($(this)),
+				operation = $(this).attr('data-operation');
+			tasks.forEach(function(t){
+				if (t.title === data.title) {
+					operation === 'up' ? t.prior = ++data.prior : t.prior = --data.prior;
+				}
+			});
+			toDoList.update(list, tasks);
+		});
+
+		var tasksFields = $('.add-task-field'), addBtn = $('#add-task');
+
+		var handeError = {
+			show: function () {
+				$('body').css({'background-color': 'red'});
+			},
+			hide: function () {
+				$('body').css({'background-color': 'white'});
+			}
+		}
+		
+		addBtn.on('click', function(){
+			var newFields = {
+				title: tasksFields.find('[name=task-name]').val().trim(),
+				prior: parseInt(tasksFields.find('[name=task-prior]').val().trim()),
+				done: tasksFields.find('[name=task-status]').prop('checked')
+			}, canAdd = true;
+
+			tasks.forEach(function(t){
+				if (t.title === newFields.title) {
+					canAdd = false;
+				}
+			});
+
+			if (canAdd) {
+				tasks.push(newFields);
+				toDoList.update(list, tasks);
+				handeError.hide();
+			} else {
+				handeError.show();
+			}
+			
+
+		})
+		// ---------------
+		// text вызвать весть текст в теге
+		// html вызвать все в теге
+	</script>
+</body>
+</html>
